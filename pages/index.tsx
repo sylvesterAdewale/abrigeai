@@ -79,18 +79,15 @@ export default function Home() {
           </div>
         </form>
         <div className="mt-5 p-2 text-white border-2 border-white rounded-xl">
-          <div className='flex gap-3'>
+          <div className='flex gap-2'>
             <p className="p-3 w-24 bg-white text-black rounded-md">Summary</p>
-            <div className='p-3 text-lg flex items-center justify-center bg-white text-black rounded-md' onClick={speak}>{speaking ? <AiFillSound /> : <AiOutlineSound />}</div>
+            <div className='p-3 text-lg flex items-center justify-center bg-white text-black rounded-md cursor-pointer' onClick={speak}>{speaking ? <AiFillSound /> : <AiOutlineSound />}</div>
           </div>
           <div className="h-24 my-2">{outPut}</div>
         </div>
       </main>
       <footer>
-        <div>
-
-        </div>
-        
+        <p>Designed By <a href="https://twitter.com/AdewaleSylvest1" target="_blank" rel="noreferrer" className='font-bold'>@Techvester</a></p>
       </footer>
     </div>
   )
