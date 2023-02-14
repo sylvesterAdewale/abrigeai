@@ -1,6 +1,7 @@
 This is an AI tool to summarize articles. 
 
 ## Check it [live](http://localhost:3000)
+Will be managing state with Jotai. For now, I use the normal useState just to get things done.
 
 ## Or Getting Started Locally
 
