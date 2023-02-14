@@ -1,12 +1,24 @@
 import Head from 'next/head'
 import React, { useState } from 'react'
 import formatOutput from '../lib/format';
+import { AiOutlineSound, AiFillSound } from 'react-icons/ai';
 
 export default function Home() {
   const [article, setArticle] = useState('');
   const [token, setToken] = useState<number>(50);
   const [outPut, setOutPut] = useState('Output will show here')
-  const [fetchLoading, setIsFetchLoading] = useState(false)
+  const [fetchLoading, setIsFetchLoading] = useState(false);
+  const [speaking, setSpeaking] = useState(false)
+
+  const speak = () => {
+    setSpeaking(true)
+    const synth = window.speechSynthesis
+    const uttrance = new SpeechSynthesisUtterance(outPut);
+
+    uttrance.onend = (e) => setSpeaking(false);
+
+    synth.speak(uttrance);
+  }
 
   const submitHandle = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,8 +53,13 @@ export default function Home() {
         <meta content='' />
       </Head>
       <header>
-        <h1 className="text-7xl">Abrigde AI</h1>
-        <p className="">Powered By <a href="https://openai.com/" target="_blank" rel="noreferrer" className='font-bold font-sans'>Open AI</a></p>
+        <div>
+          <h1 className="text-7xl">Abrigde AI</h1>
+          <p className="">Powered By <a href="https://openai.com/" target="_blank" rel="noreferrer" className='font-bold font-sans'>Open AI</a></p>
+        </div>
+        <div>
+          
+        </div>
       </header>
       <main className="my-5 py-5">
         <form onSubmit={(e) => submitHandle(e)}>
@@ -62,11 +79,11 @@ export default function Home() {
           </div>
         </form>
         <div className="mt-5 p-2 text-white border-2 border-white rounded-xl">
-          <div>
+          <div className='flex gap-3'>
             <p className="p-3 w-24 bg-white text-black rounded-md">Summary</p>
-            <div></div>
-            <div className="h-24 my-2">{outPut}</div>
+            <div className='p-3 text-lg flex items-center justify-center bg-white text-black rounded-md' onClick={speak}>{speaking ? <AiFillSound /> : <AiOutlineSound />}</div>
           </div>
+          <div className="h-24 my-2">{outPut}</div>
         </div>
       </main>
       <footer>
