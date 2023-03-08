@@ -1,5 +1,12 @@
 This is an AI tool to summarize articles. 
 
+### Built With:
+NextJs
+TailwindCSS
+Typescript
+Web Speech API
+
+
 ## Check it [live](http://localhost:3000)
 Will be managing state with Jotai. For now, I use the normal useState just to get things done.
 
